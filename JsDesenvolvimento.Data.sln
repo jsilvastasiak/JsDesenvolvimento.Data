@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1082
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JsDesenvolvimento.Data", "..\..\..\..\Projetos\JsDesenvolvimento.Data\JsDesenvolvimento.Data\JsDesenvolvimento.Data.csproj", "{4AC427AB-AD92-4BB1-8414-5B99CCBD3D66}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JsDesenvolvimento.Data.Test", "..\..\..\..\Projetos\JsDesenvolvimento.Data\JsDesenvolvimento.Data.Test\JsDesenvolvimento.Data.Test.csproj", "{FFE6C89A-932C-43F2-889C-E6426222D7CB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4AC427AB-AD92-4BB1-8414-5B99CCBD3D66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AC427AB-AD92-4BB1-8414-5B99CCBD3D66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AC427AB-AD92-4BB1-8414-5B99CCBD3D66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AC427AB-AD92-4BB1-8414-5B99CCBD3D66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFE6C89A-932C-43F2-889C-E6426222D7CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFE6C89A-932C-43F2-889C-E6426222D7CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFE6C89A-932C-43F2-889C-E6426222D7CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFE6C89A-932C-43F2-889C-E6426222D7CB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {095398C7-C129-4C27-BB4E-6691D6B3BDFB}
+	EndGlobalSection
+EndGlobal
