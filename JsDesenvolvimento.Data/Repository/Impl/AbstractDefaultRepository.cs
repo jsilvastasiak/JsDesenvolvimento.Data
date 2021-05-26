@@ -10,6 +10,7 @@ using Dapper.Contrib.Extensions;
 using JsDesenvolvimento.Data.Common.Exceptions;
 using DapperExtensions.Sql;
 using JsDesenvolvimento.Data.Common.Model;
+using DapperExtensions.Mapper;
 
 namespace JsDesenvolvimento.Data.Repository.Impl
 {
@@ -62,11 +63,10 @@ namespace JsDesenvolvimento.Data.Repository.Impl
         {
             IDictionary<string, object> parametros = new Dictionary<string, object>();
             ISqlGenerator sqlGenerator = this.AttachedContext.AcquireService<ISqlGenerator>();
+            IClassMapper classMapper = sqlGenerator.Configuration.GetMap<T>();
                         
-            string sqlGerado = predicate.GetSql(sqlGenerator, parametros);
-            string sqlMain = $@"SELECT {PREDICADO}.*
-                                  FROM { Common.SqlBuilder.MapperTableKeys<T>.GetTableName() } {PREDICADO}
-                                 WHERE {sqlGerado}";
+            string selectGerado = sqlGenerator.Select(classMapper, predicate, null, parametros);
+            string sqlMain = selectGerado;
 
             var result = await AttachedContext.InnerConnection.QueryAsync<T>(sqlMain, param: parametros, transaction: this.AttachedContext.InnerTransaction);
             return result.ToList();
@@ -75,12 +75,12 @@ namespace JsDesenvolvimento.Data.Repository.Impl
         public virtual async Task<T> FetchByKey(T entity_keys, CancellationToken cancellationToken)
         {
             IList<EntidadeKey> entidadeKeys = Common.SqlBuilder.MapperTableKeys<T>.GetWhereKeys(entity_keys);
+            ISqlGenerator sqlGenerator = this.AttachedContext.AcquireService<ISqlGenerator>();
             IPredicate whereClause = Predicates.Group(GroupOperator.And, entidadeKeys.Select(a => Predicates.Field<T>(ent => ent.GetType().GetProperty(a.NomeColuna), Operator.Eq, a.KeyValue)).ToArray());
+            IClassMapper classMapper = sqlGenerator.Configuration.GetMap<T>();
             IDictionary<string, object> parametros = new Dictionary<string, object>();
-            string sqlGerado = whereClause.GetSql(this.AttachedContext.AcquireService<ISqlGenerator>(), parametros); 
-            string sqlMain = $@"SELECT {PREDICADO}.*
-                                  FROM { Common.SqlBuilder.MapperTableKeys<T>.GetTableName() } {PREDICADO}
-                                 WHERE {sqlGerado}";
+            string sqlGerado = sqlGenerator.Select(classMapper, whereClause, null, parametros);
+            string sqlMain = sqlGerado;
 
             var result = await AttachedContext.InnerConnection.QueryFirstAsync<T>(sqlMain, param: parametros, transaction: this.AttachedContext.InnerTransaction);
             return result;

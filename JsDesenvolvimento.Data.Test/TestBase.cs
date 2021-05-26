@@ -53,7 +53,7 @@ namespace JsDesenvolvimento.Data.Test
                 typeof(AutoClassMapper<>),
                 new[]
                 {
-                    typeof(Data.Repository.Model.Loja).Assembly,                    
+                    typeof(ModuloClassMapper).Assembly,                    
                 },
                 GetDialeto()
             );

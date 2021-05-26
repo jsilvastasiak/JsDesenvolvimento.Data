@@ -4,7 +4,7 @@
 	<OutputType>LIBRARY</OutputType>
     <TargetFramework>netcoreapp2.2</TargetFramework>
 	<PackageId>JsDesenvolvimento.Data</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Authors>JsDesenvolvimento</Authors>
     <Company>GitHub</Company>
     <PackageDescription>Biblioteca de Acesso à Dados JsDesenvolvimento</PackageDescription>

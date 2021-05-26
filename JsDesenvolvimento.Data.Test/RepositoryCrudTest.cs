@@ -50,6 +50,19 @@ namespace JsDesenvolvimento.Data.Test
         }
 
         [Fact]
+        public void FetchPropertyMapperTest()
+        {
+            using (var ctx = this.AutofacContainer.Resolve<IDbContextFactory>().NewContext())
+            {
+                var repo = ctx.AcquireRepository<IPessoaRepository>();
+                var result = repo.Fetch(Predicates.Field<Pessoa>(a => a.idpessoa, Operator.Eq, 1), CancellationToken.None).Result;
+
+                Assert.True(result.Count > 0);
+                Assert.True(result[0].NomeQualquer != null);
+            }
+        }
+
+        [Fact]
         public void SetIdValueTest()
         {
             using (var ctx = this.AutofacContainer.Resolve<IDbContextFactory>().NewContext())
@@ -102,7 +115,7 @@ namespace JsDesenvolvimento.Data.Test
                 {
                    cpf = "45478945555",
                    email = "lucas.stasiaky@hotmail.com",
-                   nome = "Lucas",
+                   NomeQualquer = "Lucas",
                    senha = "1234",
                    tipoinscricao = "F"
                 };

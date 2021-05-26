@@ -13,7 +13,7 @@ namespace JsDesenvolvimento.Data.Test.Repositorios.Model
         public string tipoinscricao { get; set; }
         public string cpf { get; set; }
         public string cnpj { get; set; }
-        public string nome { get; set; }
+        public string NomeQualquer { get; set; }
         public string email { get; set; }
         public string senha { get; set; }
     }
